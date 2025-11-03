@@ -1,0 +1,94 @@
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="https://aframe.io/releases/1.7.1/aframe.min.js"></script>
+    
+    <script>
+      /* global AFRAME */
+      AFRAME.registerComponent("play-on-click", {
+        init: function () {
+          this.onClick = this.onClick.bind(this);
+        },
+        play: function () {
+          window.addEventListener("click", this.onClick);
+        },
+        pause: function () {
+          window.removeEventListener("click", this.onClick);
+        },
+        onClick: function (evt) {
+          var videoEl = this.el.getAttribute("material").src;
+          var sound = document.querySelector('#sound');
+          if (!videoEl) {
+            return;
+          }
+          this.el.object3D.visible = true;
+          videoEl.play();
+          sound.play();
+        },
+      });
+
+    </script>
+  </head>
+  <body>
+    <a-scene
+      cursor="rayorigin: mouse"
+      raycaster="objects: .video"
+      color-space="sRGB"
+      renderer="colorManagement: true, physicallyCorrectLights"
+      webxr="requiredFeatures: hit-test,local-floor;
+                optionalFeatures: dom-overlay,unbounded;
+                overlayElement: #overlay;"
+      ar-hit-test="target:#video;"
+      
+    >
+      <a-assets>
+        <video
+          id="video_musicos"
+          src="assets/Musicos_roman_instrum_conmusica.webm"
+          
+          loop="false"
+        ></video>
+        <audio 
+         id="loc_tibiac" 
+         src="assets/Tibiac_voz_mujer2.wav"
+         crossorigin="anonymous"
+         preload="auto"
+          ></audio>
+          <audio 
+         id="loc_timpanun" 
+         src="assets/Timpanum_voz_mujer.wav"
+         crossorigin="anonymous"
+         preload="auto"
+          ></audio>
+      </a-assets>
+      <!-- If you prefer use entities -->
+
+      <!-- If you prefer use a web component -->
+
+      <a-camera
+        position="0 1 0"
+        look-controls
+        wasd-controls="acceleration: 10"
+        cursor="rayOrigin: mouse"
+        raycaster="objects: .video"
+      ></a-camera>
+
+      <a-entity id="video" position="0 1 0" class="video">
+        <!-- If you prefer use a web component -->
+        <a-video
+          class="video"
+          height="0.6"
+          width="0.6"
+          material="src: #video_musicos"
+          position="0 0 -0.65"
+          play-on-click
+        >
+        </a-video>
+        <a-sound
+          id="musica"
+          src="#sound"
+          play-on-click></a-sound>
+      </a-entity>
+    </a-scene>
+  </body>
+</html>
