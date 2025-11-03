@@ -119,7 +119,9 @@
         wasd-controls="acceleration: 10"
         cursor="rayOrigin: entity"
         raycaster="objects: .click"
-      >     
+      > 
+      <a-entity id="tibiac_loc" sound="src: #loc_tibiac" position="0 0 0"></a-entity> 
+      <a-entity id="timpanum_loc" sound="src: #loc_timpanun" position="0 0 0"></a-entity>     
     </a-camera>
     
       <a-entity 
@@ -150,15 +152,14 @@
         id="timpanum_rotulo"
         src="#timpanumtxt"
         shader="flat"
-        position="0.22 0.17 -0.63"
+        position="0.2 0.17 -0.5"
         width="1"
         height="0.5"
-        scale="0.1 0.1 0"
+        scale="0.1 0.09 0"
         visible="false">
         </a-image> 
 
-        <a-entity id="tibiac_loc" sound="src: #loc_tibiac"></a-entity> 
-        <a-entity id="timpanum_loc" sound="src: #loc_timpanun"></a-entity>      
+             
     </a-scene>
     
     <div class="mainUI" id="uiDiv" oncontextmenu="return false;">
