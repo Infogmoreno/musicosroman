@@ -39,7 +39,7 @@
       ar-hit-test="target:#video;"
       
     >
-      <a-assets>
+      <a-assets>        
         <video
           id="video_musicos"
           src="assets/Musicos_roman_instrum_conmusica.webm"
@@ -78,8 +78,11 @@
         cursor="rayOrigin: entity"
         raycaster="objects: .click"
       ></a-camera>
-
-      <a-entity id="video" position="0 1 0" class="video">
+    
+      <a-entity 
+         id="video" 
+         position="0 1 0" 
+         class="click">
         <!-- If you prefer use a web component -->
         <a-video
           class="click"
@@ -94,7 +97,7 @@
         id="tibiac_rotulo"
         src="#tibiactxt"
         shader="flat"
-        position="0 0.18 -0.5"
+        position="0 0.2 -0.5"
         width="1"
         height="0.5"
         scale="0.1 0.1 0">
@@ -103,7 +106,7 @@
         id="timpanum_rotulo"
         src="#timpanumtxt"
         shader="flat"
-        position="0.22 0.15 -0.5"
+        position="0.22 0.17 -0.5"
         width="1"
         height="0.5"
         scale="0.1 0.1 0">
