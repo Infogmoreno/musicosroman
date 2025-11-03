@@ -2,6 +2,7 @@
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-event-set-component@5.0.0/dist/aframe-event-set-component.min.js"></script>
     
     <script>
       /* global AFRAME */
@@ -17,17 +18,63 @@
         },
         onClick: function (evt) {
           var videoEl = this.el.getAttribute("material").src;
-          var sound = document.querySelector('#sound');
+          
           if (!videoEl) {
             return;
           }
           this.el.object3D.visible = true;
           videoEl.play();
-          sound.play();
+          
         },
       });
 
     </script>
+
+<style>
+
+.mainUI
+{
+	border: 0px solid pink; 
+	position: fixed; 
+	top: 0px;  
+	width:99%; 
+	height:99%; 
+	z-index: 1; 
+	pointer-events: none; 
+}
+
+.regionUI
+{
+	border: none;
+	position: absolute; 
+	display: flex;
+	flex-direction: row;
+	pointer-events: none;
+}
+
+.buttonUI
+{
+	border: none;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	pointer-events: auto;	
+}
+.boton {
+  border: none;
+  border-radius: 5px;
+  background-color: rgb(190, 190, 162);
+  padding: 5px;
+  margin: 8px;
+  pointer-events: auto;
+  opacity: 1;
+}
+.boton:hover {
+  opacity: 0.6;
+  color: white
+}
+
+</style>
   </head>
   <body>
     <a-scene      
@@ -48,14 +95,12 @@
         ></video>
         <audio 
          id="loc_tibiac" 
-         src="assets/Tibiac_voz_mujer2.wav"
-         crossorigin="anonymous"
+         src="assets/Tibiac_voz_mujer2.wav"         
          preload="auto"
           ></audio>
           <audio 
          id="loc_timpanun" 
-         src="assets/Timpanum_voz_mujer.wav"
-         crossorigin="anonymous"
+         src="assets/Timpanum_voz_mujer.wav"         
          preload="auto"
           ></audio>
         <img 
@@ -67,23 +112,21 @@
          src="assets/Timpanum_txt.png"         
           >  
       </a-assets>
-      <!-- If you prefer use entities -->
-
-      <!-- If you prefer use a web component -->
-
+      
       <a-camera
         position="0 1 0"
         look-controls
         wasd-controls="acceleration: 10"
         cursor="rayOrigin: entity"
         raycaster="objects: .click"
-      ></a-camera>
+      >     
+    </a-camera>
     
       <a-entity 
          id="video" 
          position="0 1 0" 
          class="click">
-        <!-- If you prefer use a web component -->
+        
         <a-video
           class="click"
           height="0.6"
@@ -97,32 +140,65 @@
         id="tibiac_rotulo"
         src="#tibiactxt"
         shader="flat"
-        position="-0.02 0.2 -0.6"
+        position="0.02 0.2 -0.5"
         width="1"
         height="0.5"
-        scale="0.1 0.1 0">
+        scale="0.1 0.1 0"
+        visible="false">
         </a-image>
         <a-image
         id="timpanum_rotulo"
         src="#timpanumtxt"
         shader="flat"
-        position="0.22 0.17 -0.6"
+        position="0.22 0.17 -0.63"
         width="1"
         height="0.5"
-        scale="0.1 0.1 0">
-        </a-image>
-        <a-sound
-          id="tibiacloc"          
-          src="#loc_tibiac"
-          position="0.01466 0.09788 -0.6"
-          >
-         </a-sound>
-        <a-sound
-          id="timpanumcloc"
-          class="click"
-          src="#loc_timpanum"
-          play-on-click></a-sound>
-      </a-entity>
+        scale="0.1 0.1 0"
+        visible="false">
+        </a-image> 
+
+        <a-entity id="tibiac_loc" sound="src: #loc_tibiac"></a-entity> 
+        <a-entity id="timpanum_loc" sound="src: #loc_timpanun"></a-entity>      
     </a-scene>
+    
+    <div class="mainUI" id="uiDiv" oncontextmenu="return false;">
+	
+	<!-- bottom-right -->
+	<div class="regionUI baseColor" style="bottom: 12%; right: 20%;">
+		<div class="buttonUI">
+        <button id="btn_tibiac" class="boton">Tibiac</button>
+	    	<button id="btn_timpanum" class="boton">Timpanum</button>
+        
+	    </div>    	
+	</div>
+</div>
+
+<script>
+  
+  const btn_tibiac = document.querySelector ("#btn_tibiac");
+  const btn_timpanum = document.querySelector ("#btn_timpanum");
+
+  const tibiac_rotulo = document.querySelector ("#tibiac_rotulo");
+  const timpanum_rotulo = document.querySelector ("#timpanum_rotulo");
+
+
+  const tibiac_loc = document.querySelector ("#tibiac_loc");
+  const timpanum_loc = document.querySelector ("#timpanum_loc");
+
+  btn_tibiac.addEventListener ("click", function () {
+    tibiac_loc.components.sound.playSound();
+    timpanum_loc.components.sound.stopSound();
+    tibiac_rotulo.setAttribute("visible", true);
+    timpanum_rotulo.setAttribute("visible", false);
+  });
+
+   btn_timpanum.addEventListener ("click", function () {
+    timpanum_loc.components.sound.playSound();
+    tibiac_loc.components.sound.stopSound();
+    tibiac_rotulo.setAttribute("visible", false);
+    timpanum_rotulo.setAttribute("visible", true);
+  });
+
+</script>
   </body>
 </html>
