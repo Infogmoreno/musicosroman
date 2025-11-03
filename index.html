@@ -1,7 +1,7 @@
 <html>
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
+    <script src="https://aframe.io/releases/1.7.1/aframe.min.js"></script>
     
     <script>
       /* global AFRAME */
@@ -60,6 +60,14 @@
          crossorigin="anonymous"
          preload="auto"
           ></audio>
+        <img 
+         id="tibiactxt" 
+         src="assets/Tibiac_txt.png"         
+          >
+        <img 
+         id="timpanumtxt" 
+         src="assets/Timpanum_txt.png"         
+          >  
       </a-assets>
       <!-- If you prefer use entities -->
 
@@ -69,14 +77,14 @@
         position="0 1 0"
         look-controls
         wasd-controls="acceleration: 10"
-        cursor="rayOrigin: entity"
-        raycaster="objects: .video"
+        cursor="rayOrigin: mouse"
+        raycaster="objects: .click"
       ></a-camera>
 
       <a-entity id="video" position="0 1 0" class="video">
         <!-- If you prefer use a web component -->
         <a-video
-          class="video"
+          class="click"
           height="0.6"
           width="0.6"
           material="src: #video_musicos"
@@ -84,9 +92,42 @@
           play-on-click
         >
         </a-video>
+       <a-image
+        id="tibiac_rotulo"
+        src="#tibiactxt"
+        shader="flat"
+        position="0 0.18 -0.5"
+        width="1"
+        height="0.5"
+        scale="0.1 0.1 0">
+        </a-image>
+        <a-image
+        id="timpanum_rotulo"
+        src="#timpanumtxt"
+        shader="flat"
+        position="0.22 0.15 -0.5"
+        width="1"
+        height="0.5"
+        scale="0.1 0.1 0">
+        </a-image>
         <a-sound
-          id="musica"
-          src="#sound"
+          id="tibiacloc"          
+          src="#loc_tibiac"
+          position="0.01466 0.09788 -0.065"
+          >
+          <a-plane 
+          id="clicktibiac"
+          class="click" 
+          material="opacity: 0; shader: flat; transparent: true" 
+          geometry="height: 0.03; width: 0.07" 
+          position="0.01466 0.09788 -0.06"
+          play-on-click>
+        </a-plane>
+        </a-sound>
+        <a-sound
+          id="timpanumcloc"
+          class="click"
+          src="#loc_timpanum"
           play-on-click></a-sound>
       </a-entity>
     </a-scene>
