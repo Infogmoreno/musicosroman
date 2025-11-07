@@ -34,7 +34,7 @@
 
 .mainUI
 {
-	border: 0 px solid pink; 
+	border: 0px solid pink; 
 	position: fixed; 
 	top: 0px;  
 	width:99%; 
@@ -75,8 +75,8 @@
 }
 #credito {
 position: absolute;
-right: 0%;
-bottom: 0%;	
+right: -15%;
+bottom: -18%;	
 width: auto;	
 font-size: 8px;	
 font-family: Roboto;
@@ -132,10 +132,27 @@ opacity: 0.6;
         src="assets/Titular.glb"
         ></a-asset-item>  
       </a-assets>
-                
+      
+      <a-camera
+        position="0 1 0"
+        look-controls
+        wasd-controls="acceleration: 10"
+        cursor="rayOrigin: entity"
+        raycaster="objects: .click"
+      >
+       <a-entity
+       id="titular_instrum" 
+       troika-text="value: INSTRUMENTOS MUSICALES ANTIGUA ROMA; color: white; fontSize: 0.025"
+       position="-0.02 0.487 -0.64"       
+       visible="false"       
+       ></a-entity> 
+      <a-entity id="tibiac_loc" sound="src: #loc_tibiac" position="0 0 0"></a-entity> 
+      <a-entity id="timpanum_loc" sound="src: #loc_timpanun" position="0 0 0"></a-entity>     
+    </a-camera>
+    
       <a-entity 
          id="video" 
-         position="0 1.2 0" 
+         position="0 1 0" 
          class="click">
         
         <a-video
@@ -174,18 +191,8 @@ opacity: 0.6;
        scale="0.18 0.18 1"
        visible="false"
        ></a-entity>
-	  
        
-         <a-camera
-        position="0 0 0"
-        look-controls
-        wasd-controls="acceleration: 10"
-        cursor="rayOrigin: entity"
-        raycaster="objects: .click"
-      >      
-      <a-entity id="tibiac_loc" sound="src: #loc_tibiac" position="0 0 0"></a-entity> 
-      <a-entity id="timpanum_loc" sound="src: #loc_timpanun" position="0 0 0"></a-entity>     
-    </a-camera>    
+             
     </a-scene>
     
     <div class="mainUI" id="uiDiv" oncontextmenu="return false;">
@@ -194,9 +201,9 @@ opacity: 0.6;
 	<div class="regionUI baseColor" style="bottom: 9%; right: 12%;">
 		<div class="buttonUI">
         <button id="btn_tibiac" class="boton">Tibiac</button>
-	   	<button id="btn_timpanum" class="boton">Timpanum</button>
+	    	<button id="btn_timpanum" class="boton">Timpanum</button>
         <button id="btn_detalles" class="boton">Detalles</button>
-		<p id="credito">JoseMaría Moreno</p>	
+        <p id="credito">JoseMaría Moreno</p>        
 	    </div>    	
 	</div>
 </div>
