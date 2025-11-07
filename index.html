@@ -129,7 +129,10 @@
         wasd-controls="acceleration: 10"
         cursor="rayOrigin: entity"
         raycaster="objects: .click"
-      ></a-camera> 
+      >
+	  <a-entity id="tibiac_loc" sound="src: #loc_tibiac" position="0 0 0"></a-entity> 
+      <a-entity id="timpanum_loc" sound="src: #loc_timpanun" position="0 0 0"></a-entity>       
+	  </a-camera> 
     
       <a-entity 
          id="video" 
@@ -171,12 +174,7 @@
        position="0.75 0.01 -0.85"
        scale="0.18 0.18 1"
        visible="false"
-       ></a-entity>
-       
-       
-      
-      <a-entity id="tibiac_loc" sound="src: #loc_tibiac" position="0 0 0"></a-entity> 
-      <a-entity id="timpanum_loc" sound="src: #loc_timpanun" position="0 0 0"></a-entity>     
+       ></a-entity>      
          
     </a-scene>
     
