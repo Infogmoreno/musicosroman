@@ -3,7 +3,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
     <script src="https://unpkg.com/aframe-event-set-component@5.0.0/dist/aframe-event-set-component.min.js"></script>
-    
+    <script src="https://unpkg.com/aframe-troika-text/dist/aframe-troika-text.min.js"></script>
     <script>
       /* global AFRAME */
       AFRAME.registerComponent("play-on-click", {
@@ -93,7 +93,7 @@ opacity: 0.6;
       webxr="requiredFeatures: hit-test,local-floor;
                 optionalFeatures: dom-overlay,unbounded;
                 overlayElement: #uiDiv;"
-      
+      ar-hit-test="target:#video;"
       
     >
       <a-assets>        
@@ -133,18 +133,11 @@ opacity: 0.6;
         ></a-asset-item>  
       </a-assets>
       
-        <a-camera
-        position="0 0 0"       
-        cursor="rayOrigin: entity"
-        raycaster="objects: .click"
-      >
-      
-      <a-entity id="tibiac_loc" sound="src: #loc_tibiac" position="0 0 0"></a-entity> 
-      <a-entity id="timpanum_loc" sound="src: #loc_timpanun" position="0 0 0"></a-entity>     
-    </a-camera>    
+     
+    
       <a-entity 
          id="video" 
-         position="0 0 0" 
+         position="0 1 0" 
          class="click">
         
         <a-video
@@ -184,7 +177,22 @@ opacity: 0.6;
        visible="false"
        ></a-entity>
        
-       
+        <a-camera
+        position="0 0 0"
+        look-controls
+        wasd-controls="acceleration: 10"
+        cursor="rayOrigin: entity"
+        raycaster="objects: .click"
+      >
+       <a-entity
+       id="titular_instrum" 
+       troika-text="value: INSTRUMENTOS MUSICALES ANTIGUA ROMA; color: white; fontSize: 0.025"
+       position="-0.02 0.487 -0.64"       
+       visible="false"       
+       ></a-entity> 
+      <a-entity id="tibiac_loc" sound="src: #loc_tibiac" position="0 0 0"></a-entity> 
+      <a-entity id="timpanum_loc" sound="src: #loc_timpanun" position="0 0 0"></a-entity>     
+    </a-camera>      
     </a-scene>
     
     <div class="mainUI" id="uiDiv" oncontextmenu="return false;">
