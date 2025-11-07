@@ -133,7 +133,15 @@ opacity: 0.6;
         ></a-asset-item>  
       </a-assets>
       
-        
+        <a-camera
+        position="0 0 0"       
+        cursor="rayOrigin: entity"
+        raycaster="objects: .click"
+      >
+      
+      <a-entity id="tibiac_loc" sound="src: #loc_tibiac" position="0 0 0"></a-entity> 
+      <a-entity id="timpanum_loc" sound="src: #loc_timpanun" position="0 0 0"></a-entity>     
+    </a-camera>    
       <a-entity 
          id="video" 
          position="0 1.7 0" 
@@ -176,15 +184,7 @@ opacity: 0.6;
        visible="false"
        ></a-entity>
        
-       <a-camera
-        position="0 0 0"       
-        cursor="rayOrigin: entity"
-        raycaster="objects: .click"
-      >
-      
-      <a-entity id="tibiac_loc" sound="src: #loc_tibiac" position="0 0 0"></a-entity> 
-      <a-entity id="timpanum_loc" sound="src: #loc_timpanun" position="0 0 0"></a-entity>     
-    </a-camera>    
+       
     </a-scene>
     
     <div class="mainUI" id="uiDiv" oncontextmenu="return false;">
