@@ -73,16 +73,6 @@
   opacity: 0.6;
   color: white
 }
-#credito {
-position: absolute;
-right: -15%;
-bottom: -18%;	
-width: auto;	
-font-size: 8px;	
-font-family: Roboto;
-color: white;
-opacity: 0.6;	
-}	
 
 </style>
   </head>
@@ -184,12 +174,7 @@ opacity: 0.6;
         cursor="rayOrigin: entity"
         raycaster="objects: .click"
       >
-       <a-entity
-       id="titular_instrum" 
-       troika-text="value: INSTRUMENTOS MUSICALES ANTIGUA ROMA; color: white; fontSize: 0.025"
-       position="-0.02 0.487 -0.64"       
-       visible="false"       
-       ></a-entity> 
+      
       <a-entity id="tibiac_loc" sound="src: #loc_tibiac" position="0 0 0"></a-entity> 
       <a-entity id="timpanum_loc" sound="src: #loc_timpanun" position="0 0 0"></a-entity>     
     </a-camera>      
@@ -203,7 +188,7 @@ opacity: 0.6;
         <button id="btn_tibiac" class="boton">Tibiac</button>
 	    	<button id="btn_timpanum" class="boton">Timpanum</button>
         <button id="btn_detalles" class="boton">Detalles</button>
-        <p id="credito">JoseMaría Moreno</p>        
+               
 	    </div>    	
 	</div>
 </div>
