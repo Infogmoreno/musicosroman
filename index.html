@@ -123,7 +123,13 @@
         ></a-asset-item>  
       </a-assets>
       
-     
+      <a-camera
+        position="0 0 0"
+        look-controls
+        wasd-controls="acceleration: 10"
+        cursor="rayOrigin: entity"
+        raycaster="objects: .click"
+      >
     
       <a-entity 
          id="video" 
@@ -167,13 +173,7 @@
        visible="false"
        ></a-entity>
        
-        <a-camera
-        position="0 0 0"
-        look-controls
-        wasd-controls="acceleration: 10"
-        cursor="rayOrigin: entity"
-        raycaster="objects: .click"
-      >
+       
       
       <a-entity id="tibiac_loc" sound="src: #loc_tibiac" position="0 0 0"></a-entity> 
       <a-entity id="timpanum_loc" sound="src: #loc_timpanun" position="0 0 0"></a-entity>     
